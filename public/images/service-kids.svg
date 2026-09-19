@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#1a1a1a"/>
+  <circle cx="200" cy="180" r="50" fill="#0b0b0b"/>
+  <circle cx="200" cy="180" r="30" fill="#c7a46a"/>
+  <text x="200" y="280" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#8c8c8c">Kids Cut</text>
+</svg>

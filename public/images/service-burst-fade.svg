@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#1a1a1a"/>
+  <rect x="100" y="50" width="200" height="200" rx="100" fill="#0b0b0b"/>
+  <path d="M200 80 Q240 120 200 160 Q160 200 200 240" stroke="#c7a46a" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <text x="200" y="280" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#8c8c8c">Burst Fade</text>
+</svg>
