@@ -1763,8 +1763,33 @@ section[id] {
     grid-template-columns: 1fr;
   }
 
+  .footer {
+    padding: 3rem 0 1.5rem;
+  }
+
   .footer__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem 1.5rem;
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer__tagline {
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .footer__copyright {
+    margin-top: 0.5rem;
+  }
+
+  .footer__links h4 {
+    margin-bottom: 0.75rem;
+  }
+
+  .footer__links a {
+    margin-bottom: 0.4rem;
   }
 }
 
@@ -2007,6 +2032,25 @@ section[id] {
 
 .appointment-type__option.selected::before {
   opacity: 1;
+}
+
+/* "Visit LG CUT" is a WhatsApp link, not a selectable option — keep it looking
+   identical to the button but always show the WhatsApp badge. */
+.appointment-type__option--link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.appointment-type__option--link .appointment-type__check {
+  opacity: 1;
+  transform: scale(1);
+  background: #25d366;
+  color: #fff;
+}
+
+.appointment-type__option--link .appointment-type__check svg {
+  width: 13px;
+  height: 13px;
 }
 
 .appointment-type__icon {

@@ -5,7 +5,7 @@ export const businessConfig = {
   name: "LG CUT",
   tagline: "Your cut. Your time.",
   description: "Premium barbering around FUNAAB and Abeokuta. We come to you or you visit us — either way, you leave sharper than you arrived.",
-  phone: "+234 800 000 0000",
+  phone: "08141255405",
   whatsappNumber: "08141255405",
   whatsappLink: "https://wa.me/2348141255405",
   email: "hello@lgcut.com",
@@ -38,7 +38,7 @@ export const locations = [
     city: "FUNAAB",
     state: "Ogun State",
     fullAddress: "Shop 12, Alabata Commercial Complex, along Olabisi Onabanjo Way, Alabata, FUNAAB, Ogun State",
-    phone: "+234 800 000 0000",
+    phone: "08141255405",
     email: "funaab@lgcut.com",
     openingHours: {
       monday: { open: "10:00", close: "18:00", closed: false },
@@ -280,13 +280,13 @@ export const testimonials = [
     name: "Tayo Adeyemi",
     role: "Student, FUNAAB",
     quote: "Best fade in Ogun State. Sam actually listens to what you want.",
-    image: "/images/agustin-fernandez-1Pmp9uxK8X8-unsplash.jpg",
+    image: "/images/testimonial-tayo.jpg",
   },
   {
     id: 2,
     name: "Kunle Bakare",
     role: "Entrepreneur, Abeokuta",
     quote: "The home service saved me when I had back-to-back meetings. Sharp as always.",
-    image: "/images/delfina-pan-wJoB8D3hnzc-unsplash.jpg",
+    image: "/images/testimonial-kunle.jpg",
   },
 ];
