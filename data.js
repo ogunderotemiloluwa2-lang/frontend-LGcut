@@ -188,6 +188,39 @@ export const services = [
     image: "/images/style-waves-new.jpg",
   },
   {
+    id: "low-cut-fade",
+    name: "Low Cut Fade",
+    description: "A clean low cut with a sharp fade and crisp line-up — neat, low-maintenance and always fresh.",
+    duration: 35,
+    basePrice: 4000,
+    visitPrice: 4000,
+    homePrice: 4000,
+    category: "Hair",
+    image: "/images/style-low-cut-fade.jpg",
+  },
+  {
+    id: "leopard-dye",
+    name: "Leopard Print Dye",
+    description: "Bold leopard-spot pattern dyed into the hair — a statement colour job with pink and black detailing.",
+    duration: 90,
+    basePrice: 15000,
+    visitPrice: 15000,
+    homePrice: 15000,
+    category: "Hair",
+    image: "/images/style-leopard-dye.jpg",
+  },
+  {
+    id: "tinted-afro",
+    name: "Tinted Afro",
+    description: "A full afro coloured with a vibrant tint — rounded, defined and finished with a bold colour.",
+    duration: 90,
+    basePrice: 15000,
+    visitPrice: 15000,
+    homePrice: 15000,
+    category: "Hair",
+    image: "/images/style-tinted-afro.jpg",
+  },
+  {
     // Fallback for unique style names we don't have in the gallery. The client
     // types the name and we book it at a standard cut price.
     id: "custom",
@@ -209,11 +242,11 @@ export const addOns = [
     id: "dye-tint",
     name: "Dye / Tint",
     description: "Add colour or tint to your style.",
-    price: 2000,
+    price: 15000,
   },
 ];
 
-export const pricingNote = "Haircut: ₦4,000. Dye / Tint: +₦2,000. Final pricing may be agreed higher after an in-person consultation."
+export const pricingNote = "Haircut: ₦4,000. Dye / Tint: ₦15,000. Final pricing may be agreed higher after an in-person consultation."
 
 export const serviceZones = [
   {
