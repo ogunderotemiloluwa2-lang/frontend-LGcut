@@ -101,7 +101,7 @@ export async function checkServiceArea(address) {
   return {
     available: true,
     zone,
-    travelFee: zone.travelFee,
+    travelFee: 0,
     estimatedTravelTime: zone.estimatedTravelTime || `${zone.travelTimeMinutes} minutes`,
     message: "Home service available",
   };
@@ -178,10 +178,6 @@ export async function calculatePrice({ serviceId, appointmentType, locationId, s
   } else if (appointmentType === "home") {
     price = service.homePrice;
     priceBreakdown.push({ label: "Service price", amount: service.homePrice });
-    if (zone) {
-      price += zone.travelFee;
-      priceBreakdown.push({ label: "Travel fee", amount: zone.travelFee });
-    }
   }
 
   // Location price adjustment (only for visit)
@@ -204,7 +200,7 @@ export async function calculatePrice({ serviceId, appointmentType, locationId, s
     basePrice: appointmentType === "visit" ? service.visitPrice : service.homePrice,
     locationAdjustment: appointmentType === "visit" && location ? location.priceAdjustment : 0,
     typeModifier: 0,
-    travelFee: appointmentType === "home" && zone ? zone.travelFee : 0,
+    travelFee: 0,
     addOnsTotal,
     addOns: selectedAddOns.map((a) => ({ id: a.id, name: a.name, price: a.price })),
     totalPrice: price,

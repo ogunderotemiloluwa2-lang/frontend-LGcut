@@ -236,17 +236,24 @@ export const services = [
   },
 ];
 
-// Optional extras the customer can add to any service
+// Optional extras the customer can add to any service.
+// The customer picks EITHER a dye OR a tint — they are separate options.
 export const addOns = [
   {
-    id: "dye-tint",
-    name: "Dye / Tint",
-    description: "Add colour or tint to your style.",
+    id: "dye",
+    name: "Dye",
+    description: "Add colour to your style.",
+    price: 2000,
+  },
+  {
+    id: "tint",
+    name: "Tint",
+    description: "Add a tint to your style.",
     price: 15000,
   },
 ];
 
-export const pricingNote = "Haircut: ₦4,000. Dye / Tint: ₦15,000. Final pricing may be agreed higher after an in-person consultation."
+export const pricingNote = "Haircut: ₦4,000. Dye: ₦2,000. Tint: ₦15,000. Final pricing may be agreed higher after an in-person consultation."
 
 export const serviceZones = [
   {
@@ -255,7 +262,7 @@ export const serviceZones = [
     city: "FUNAAB",
     state: "Ogun State",
     maxDistance: 15, // km
-    travelFee: 2000,
+    travelFee: 0,
     travelTimeMinutes: 20,
     estimatedTravelTime: "15–25 minutes",
     active: true,
@@ -266,7 +273,7 @@ export const serviceZones = [
     city: "Abeokuta",
     state: "Ogun State",
     maxDistance: 20, // km
-    travelFee: 3000,
+    travelFee: 0,
     travelTimeMinutes: 30,
     estimatedTravelTime: "25–40 minutes",
     active: true,
@@ -277,7 +284,7 @@ export const serviceZones = [
     city: "Sagamu",
     state: "Ogun State",
     maxDistance: 25, // km
-    travelFee: 4000,
+    travelFee: 0,
     travelTimeMinutes: 50,
     estimatedTravelTime: "40–60 minutes",
     active: true,

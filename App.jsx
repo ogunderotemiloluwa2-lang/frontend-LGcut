@@ -242,12 +242,11 @@ function App() {
     setPriceInfo(price);
   };
 
-  // Toggle an optional add-on (e.g. dye / tint) and refresh the price.
+  // Select an optional add-on. The customer picks EITHER a dye OR a tint,
+  // so selecting one replaces any other; selecting the same one clears it.
   const handleAddOnToggle = async (addOnId) => {
     const current = booking.addOnIds || [];
-    const next = current.includes(addOnId)
-      ? current.filter((id) => id !== addOnId)
-      : [...current, addOnId];
+    const next = current.includes(addOnId) ? [] : [addOnId];
     const updated = { ...booking, addOnIds: next };
     setBooking(updated);
     await recalculatePrice(updated);
@@ -1390,7 +1389,7 @@ function AddressStep({ booking, updateAddress, serviceAreaStatus, setServiceArea
               </div>
               {serviceAreaStatus.available && serviceAreaStatus.zone && (
                 <p style={{ fontSize: "0.85rem", color: "var(--muted)", marginTop: "0.5rem" }}>
-                  Zone: {serviceAreaStatus.zone.name} · Travel fee: ₦{serviceAreaStatus.travelFee.toLocaleString()} · ETA: {serviceAreaStatus.estimatedTravelTime}
+                  Zone: {serviceAreaStatus.zone.name} · ETA: {serviceAreaStatus.estimatedTravelTime}
                 </p>
               )}
               {!serviceAreaStatus.available && (
@@ -1484,7 +1483,7 @@ function ServiceStep({ booking, services, addOns, priceInfo, onServiceSelect, on
       {/* Add-ons appear once a style is chosen */}
       {canProceed && addOns && addOns.length > 0 && (
         <div className="add-ons" ref={addOnsRef}>
-          <div className="add-ons__title">Add a finish (optional)</div>
+          <div className="add-ons__title">Add a finish (optional) — choose one</div>
           <div className="add-ons__list">
             {addOns.map((addOn) => {
               const selected = selectedAddOnIds.includes(addOn.id);
@@ -1521,12 +1520,6 @@ function ServiceStep({ booking, services, addOns, priceInfo, onServiceSelect, on
             <div className="price-summary__row">
               <span className="price-summary__label">Location Adjustment</span>
               <span className="price-summary__value">+ ₦{priceInfo.locationAdjustment.toLocaleString()}</span>
-            </div>
-          )}
-          {priceInfo.travelFee > 0 && (
-            <div className="price-summary__row">
-              <span className="price-summary__label">Travel Fee</span>
-              <span className="price-summary__value">+ ₦{priceInfo.travelFee.toLocaleString()}</span>
             </div>
           )}
           {(priceInfo.addOns || []).map((addOn) => (
@@ -1980,12 +1973,6 @@ function ReviewStep({ booking, priceInfo, serviceAreaStatus, locations, services
                 <span className="review__value">+ ₦{priceInfo.locationAdjustment.toLocaleString()}</span>
               </div>
             )}
-            {priceInfo.travelFee > 0 && (
-              <div className="review__row">
-                <span className="review__label">Travel Fee</span>
-                <span className="review__value">+ ₦{priceInfo.travelFee.toLocaleString()}</span>
-              </div>
-            )}
             {(priceInfo.addOns || []).map((addOn) => (
               <div className="review__row" key={addOn.id}>
                 <span className="review__label">{addOn.name}</span>
@@ -2096,12 +2083,6 @@ function BookingSummary({ booking, priceInfo, serviceAreaStatus, locations, serv
               <div className="booking-summary__row">
                 <span className="booking-summary__label">Location Adjustment</span>
                 <span className="booking-summary__value">+ ₦{priceInfo.locationAdjustment.toLocaleString()}</span>
-              </div>
-            )}
-            {priceInfo.travelFee > 0 && (
-              <div className="booking-summary__row">
-                <span className="booking-summary__label">Travel Fee</span>
-                <span className="booking-summary__value">+ ₦{priceInfo.travelFee.toLocaleString()}</span>
               </div>
             )}
             {(priceInfo.addOns || []).map((addOn) => (
