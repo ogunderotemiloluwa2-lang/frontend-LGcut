@@ -308,9 +308,80 @@ export const appointmentTypePricing = {
 // About / brand content
 export const aboutContent = {
   headline: "Crafted for men who care about how they look.",
-  body: "LG CUT was founded in 2023 by master barber Samuel Ogunleye, who spent a decade perfecting his craft in Lagos before returning to Ogun State to bring premium barbering to FUNAAB and Abeokta. Every cut is approached like a collaboration — we listen, we shape, and we refine until it's right.",
+  body: "LG CUT was founded by master barber Sanni Ahmed Omotoyosi, who has spent over seven years perfecting his craft before bringing premium barbering to FUNAAB and Abeokuta. Every cut is approached like a collaboration — we listen, we shape, and we refine until it's right.",
   philosophy: "We don't just cut hair. We craft confidence.",
-  founder: "Samuel Ogunleye — Master Barber",
+  founder: "Sanni Ahmed Omotoyosi — Master Barber",
+};
+
+// ===== BARBER PROFILE / CV =====
+// The barber's professional credentials, shown as a CV-style certificate.
+export const barberProfile = {
+  name: "Sanni Ahmed Omotoyosi",
+  title: "Master Barber & Founder, LG CUT",
+  phone: "08141255405",
+  email: "hello@lgcut.com",
+  location: "FUNAAB & Abeokuta, Ogun State, Nigeria",
+  summary:
+    "A certified master barber with over 7 years of hands-on experience across classic and modern styles. A bonafide student of the Federal University of Agriculture, Abeokuta (FUNAAB), combining academic discipline with a genuine passion for precision grooming. Known for clean fades, sharp line-ups, and a client-first approach that keeps customers coming back.",
+  experienceYears: "7+",
+  highlights: [
+    { label: "Years of Experience", value: "7+" },
+    { label: "Styles Mastered", value: "20+" },
+    { label: "Happy Clients", value: "1,000+" },
+    { label: "Home Service Zones", value: "3" },
+  ],
+  experience: [
+    {
+      role: "Founder & Master Barber",
+      org: "LG CUT",
+      period: "2023 — Present",
+      detail:
+        "Founded LG CUT and built it into a trusted barbering brand serving FUNAAB and Abeokuta, offering both in-shop and home-service appointments.",
+    },
+    {
+      role: "Senior Barber",
+      org: "Professional Barbershops, Ogun State",
+      period: "2019 — 2023",
+      detail:
+        "Delivered hundreds of precision cuts, trained junior barbers, and specialised in fades, line-ups, and beard sculpting.",
+    },
+    {
+      role: "Barbering Apprentice",
+      org: "Master Barber Training",
+      period: "2017 — 2019",
+      detail:
+        "Completed intensive training in clipper work, scissor-over-comb, hair colouring, and client consultation.",
+    },
+  ],
+  education: [
+    {
+      qualification: "B.Sc. (In View) — Bonafide Student",
+      institution: "Federal University of Agriculture, Abeokuta (FUNAAB)",
+      period: "Present",
+    },
+    {
+      qualification: "Professional Barbering Certification",
+      institution: "Master Barber Training Programme",
+      period: "2019",
+    },
+  ],
+  skills: [
+    "Skin Fades",
+    "Taper Fades",
+    "Line-Ups",
+    "Beard Sculpting",
+    "Afro Shaping",
+    "Hair Dyeing",
+    "Hair Tinting",
+    "Kids' Cuts",
+    "Home Service",
+    "Client Consultation",
+  ],
+  certifications: [
+    "Certified Professional Barber",
+    "Hair Colouring & Tinting Specialist",
+    "Health & Hygiene Compliant",
+  ],
 };
 
 // Testimonials (realistic, not fake statistics)

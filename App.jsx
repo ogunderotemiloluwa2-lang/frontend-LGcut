@@ -7,6 +7,7 @@ import {
   pricingNote,
   aboutContent,
   testimonials,
+  barberProfile,
 } from "./data.js";
 
 // Smoothly scroll an element into view, leaving room for the fixed navbar.
@@ -367,6 +368,7 @@ function App() {
             <a href="#services" className="navbar__link" onClick={handleNavClick}>Services</a>
             <a href="#locations" className="navbar__link" onClick={handleNavClick}>Locations</a>
             <a href="#about" className="navbar__link" onClick={handleNavClick}>About</a>
+            <a href="#profile" className="navbar__link" onClick={handleNavClick}>Profile</a>
             <a href="#contact" className="navbar__link" onClick={handleNavClick}>Contact</a>
             <a href="#admin" className="navbar__mobile-admin" onClick={handleNavClick}>Admin Login</a>
           </div>
@@ -476,7 +478,7 @@ function App() {
               <div className="about__image-wrapper">
                 <img
                   src="/images/lgcut-1.jpg"
-                  alt="Samuel Ogunleye, founder of LG CUT"
+                  alt="Sanni Ahmed Omotoyosi, founder of LG CUT"
                   className="about__img"
                 />
               </div>
@@ -486,6 +488,122 @@ function App() {
               <h2 className="about__title">{aboutContent.philosophy}</h2>
               <p className="about__body">{aboutContent.body}</p>
               <p className="about__founder">— {aboutContent.founder}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== BARBER PROFILE / CV ===== */}
+      <section id="profile" className="section-sm">
+        <div className="container">
+          <div className="section-header">
+            <span className="label-sm text-accent">Meet Your Barber</span>
+            <h2 className="section-title">Professional Profile</h2>
+            <p className="section-subtitle">
+              Certified, experienced, and trusted — here's the barber behind LG CUT.
+            </p>
+          </div>
+
+          <div className="cv">
+            <header className="cv__header">
+              <div className="cv__identity">
+                <div className="cv__avatar" aria-hidden="true">
+                  {barberProfile.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .slice(0, 2)
+                    .join("")}
+                </div>
+                <div>
+                  <h3 className="cv__name">{barberProfile.name}</h3>
+                  <p className="cv__role">{barberProfile.title}</p>
+                  <p className="cv__meta">
+                    {barberProfile.location}
+                  </p>
+                </div>
+              </div>
+              <div className="cv__contact">
+                <a href={`tel:${barberProfile.phone}`} className="cv__contact-item">
+                  <span className="cv__contact-label">Phone</span>
+                  <span className="cv__contact-value">{barberProfile.phone}</span>
+                </a>
+                <a href={`mailto:${barberProfile.email}`} className="cv__contact-item">
+                  <span className="cv__contact-label">Email</span>
+                  <span className="cv__contact-value">{barberProfile.email}</span>
+                </a>
+              </div>
+            </header>
+
+            <div className="cv__stats">
+              {barberProfile.highlights.map((h) => (
+                <div className="cv__stat" key={h.label}>
+                  <span className="cv__stat-value">{h.value}</span>
+                  <span className="cv__stat-label">{h.label}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="cv__body">
+              <div className="cv__main">
+                <section className="cv__block">
+                  <h4 className="cv__block-title">Professional Summary</h4>
+                  <p className="cv__summary">{barberProfile.summary}</p>
+                </section>
+
+                <section className="cv__block">
+                  <h4 className="cv__block-title">Work Experience</h4>
+                  <ul className="cv__timeline">
+                    {barberProfile.experience.map((exp) => (
+                      <li className="cv__timeline-item" key={`${exp.role}-${exp.period}`}>
+                        <div className="cv__timeline-head">
+                          <span className="cv__timeline-role">{exp.role}</span>
+                          <span className="cv__timeline-period">{exp.period}</span>
+                        </div>
+                        <span className="cv__timeline-org">{exp.org}</span>
+                        <p className="cv__timeline-detail">{exp.detail}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section className="cv__block">
+                  <h4 className="cv__block-title">Education</h4>
+                  <ul className="cv__timeline">
+                    {barberProfile.education.map((edu) => (
+                      <li className="cv__timeline-item" key={edu.qualification}>
+                        <div className="cv__timeline-head">
+                          <span className="cv__timeline-role">{edu.qualification}</span>
+                          <span className="cv__timeline-period">{edu.period}</span>
+                        </div>
+                        <span className="cv__timeline-org">{edu.institution}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              </div>
+
+              <aside className="cv__side">
+                <section className="cv__block">
+                  <h4 className="cv__block-title">Core Skills</h4>
+                  <div className="cv__skills">
+                    {barberProfile.skills.map((skill) => (
+                      <span className="cv__skill" key={skill}>{skill}</span>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="cv__block">
+                  <h4 className="cv__block-title">Certifications</h4>
+                  <ul className="cv__certs">
+                    {barberProfile.certifications.map((cert) => (
+                      <li className="cv__cert" key={cert}>
+                        <span className="cv__cert-check" aria-hidden="true">✓</span>
+                        {cert}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              </aside>
             </div>
           </div>
         </div>
@@ -702,6 +820,7 @@ function App() {
               <a href="#services">Services</a>
               <a href="#locations">Locations</a>
               <a href="#about">About</a>
+              <a href="#profile">Profile</a>
               <a href="#contact">Contact</a>
             </div>
 
