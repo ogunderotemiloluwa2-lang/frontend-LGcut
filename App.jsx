@@ -33,6 +33,7 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
+  const [profileExpanded, setProfileExpanded] = useState(false);
   const bookingSectionRef = useRef(null);
 
   // Booking state
@@ -504,7 +505,7 @@ function App() {
             </p>
           </div>
 
-          <div className="cv">
+          <div className={`cv ${profileExpanded ? "cv--open" : ""}`}>
             <header className="cv__header">
               <div className="cv__identity">
                 <div className="cv__avatar" aria-hidden="true">
@@ -517,9 +518,8 @@ function App() {
                 <div>
                   <h3 className="cv__name">{barberProfile.name}</h3>
                   <p className="cv__role">{barberProfile.title}</p>
-                  <p className="cv__meta">
-                    {barberProfile.location}
-                  </p>
+                  <p className="cv__meta">{barberProfile.location}</p>
+                  <p className="cv__meta cv__meta--avail">{barberProfile.availability}</p>
                 </div>
               </div>
               <div className="cv__contact">
@@ -542,6 +542,16 @@ function App() {
                 </div>
               ))}
             </div>
+
+            <button
+              type="button"
+              className="cv__toggle"
+              onClick={() => setProfileExpanded((v) => !v)}
+              aria-expanded={profileExpanded}
+            >
+              <span>{profileExpanded ? "Hide Full Profile" : "View Full Profile"}</span>
+              <span className={`cv__toggle-icon ${profileExpanded ? "open" : ""}`} aria-hidden="true">⌄</span>
+            </button>
 
             <div className="cv__body">
               <div className="cv__main">
@@ -602,6 +612,15 @@ function App() {
                       </li>
                     ))}
                   </ul>
+                </section>
+
+                <section className="cv__block">
+                  <h4 className="cv__block-title">Languages</h4>
+                  <div className="cv__skills">
+                    {barberProfile.languages.map((lang) => (
+                      <span className="cv__skill" key={lang}>{lang}</span>
+                    ))}
+                  </div>
                 </section>
               </aside>
             </div>

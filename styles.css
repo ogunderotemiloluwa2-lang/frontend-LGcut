@@ -1448,6 +1448,45 @@ section[id] {
   margin-top: 0.5rem;
 }
 
+.cv__meta--avail {
+  color: var(--accent);
+}
+
+/* Toggle button — only shown on mobile to keep the landing page short */
+.cv__toggle {
+  display: none;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--off-white);
+  border: none;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.cv__toggle:hover {
+  background: var(--paper);
+}
+
+.cv__toggle-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform var(--transition-base);
+}
+
+.cv__toggle-icon.open {
+  transform: rotate(180deg);
+}
+
 .cv__body {
   display: grid;
   grid-template-columns: 1.7fr 1fr;
@@ -2037,8 +2076,21 @@ section[id] {
     border-bottom: 1px solid var(--line);
   }
 
+  /* On mobile the full CV is collapsed by default so the landing page stays
+     short — the customer taps "View Full Profile" to reveal it. */
+  .cv__toggle {
+    display: flex;
+  }
+
   .cv__body {
+    display: none;
     padding: 1.75rem;
+  }
+
+  .cv--open .cv__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
   }
 
   .hero__title {

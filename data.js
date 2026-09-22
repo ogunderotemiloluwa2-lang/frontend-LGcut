@@ -321,9 +321,9 @@ export const barberProfile = {
   phone: "08141255405",
   email: "hello@lgcut.com",
   location: "FUNAAB & Abeokuta, Ogun State, Nigeria",
+  availability: "Available 7 days a week · 10:00 – 18:00",
   summary:
-    "A certified master barber with over 7 years of hands-on experience across classic and modern styles. A bonafide student of the Federal University of Agriculture, Abeokuta (FUNAAB), combining academic discipline with a genuine passion for precision grooming. Known for clean fades, sharp line-ups, and a client-first approach that keeps customers coming back.",
-  experienceYears: "7+",
+    "A certified master barber with over 7 years of hands-on experience across classic and contemporary styles. A bonafide student of the Federal University of Agriculture, Abeokuta (FUNAAB), combining academic discipline with a genuine passion for precision grooming. Known for clean fades, razor-sharp line-ups, and a client-first approach that keeps customers coming back.",
   highlights: [
     { label: "Years of Experience", value: "7+" },
     { label: "Styles Mastered", value: "20+" },
@@ -333,24 +333,24 @@ export const barberProfile = {
   experience: [
     {
       role: "Founder & Master Barber",
-      org: "LG CUT",
+      org: "LG CUT — FUNAAB & Abeokuta",
       period: "2023 — Present",
       detail:
-        "Founded LG CUT and built it into a trusted barbering brand serving FUNAAB and Abeokuta, offering both in-shop and home-service appointments.",
+        "Founded LG CUT and grew it into a trusted barbering brand serving FUNAAB and Abeokuta. Leads a full-service shop offering in-shop and home-service appointments, manages bookings, and personally handles every client consultation.",
     },
     {
       role: "Senior Barber",
-      org: "Professional Barbershops, Ogun State",
-      period: "2019 — 2023",
+      org: "Elite Cuts Barbershop, Abeokuta",
+      period: "2020 — 2023",
       detail:
-        "Delivered hundreds of precision cuts, trained junior barbers, and specialised in fades, line-ups, and beard sculpting.",
+        "Delivered 100+ precision cuts weekly, mentored junior barbers, and specialised in skin fades, line-ups, and beard sculpting. Maintained a loyal client base through consistent quality and punctuality.",
     },
     {
       role: "Barbering Apprentice",
-      org: "Master Barber Training",
-      period: "2017 — 2019",
+      org: "Master Barber Training Academy",
+      period: "2017 — 2020",
       detail:
-        "Completed intensive training in clipper work, scissor-over-comb, hair colouring, and client consultation.",
+        "Completed a structured 3-year apprenticeship covering clipper work, scissor-over-comb, hair colouring and tinting, hygiene standards, and client consultation.",
     },
   ],
   education: [
@@ -361,8 +361,13 @@ export const barberProfile = {
     },
     {
       qualification: "Professional Barbering Certification",
-      institution: "Master Barber Training Programme",
-      period: "2019",
+      institution: "Master Barber Training Academy",
+      period: "2020",
+    },
+    {
+      qualification: "Senior Secondary School Certificate (SSCE)",
+      institution: "Ogun State, Nigeria",
+      period: "2016",
     },
   ],
   skills: [
@@ -382,6 +387,7 @@ export const barberProfile = {
     "Hair Colouring & Tinting Specialist",
     "Health & Hygiene Compliant",
   ],
+  languages: ["English", "Yoruba"],
 };
 
 // Testimonials (realistic, not fake statistics)
