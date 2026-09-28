@@ -19,6 +19,8 @@ function scrollToElement(el, offset = 90) {
 import {
   getServices,
   getLocations,
+
+
   checkServiceArea,
   getAvailability,
   getAvailableDates,
@@ -424,6 +426,8 @@ function App() {
                   src="/images/lgcut-2.jpg"
                   alt="Barber cutting hair at LG CUT"
                   className="hero__img"
+                  fetchPriority="high"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -481,6 +485,8 @@ function App() {
                   src="/images/lgcut-1.jpg"
                   alt="Sanni Ahmed Omotoyosi, founder of LG CUT"
                   className="about__img"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -1270,7 +1276,12 @@ function TestimonialCard({ testimonial }) {
   return (
     <div className="testimonial-card">
       <div className="testimonial-card__image">
-        <img src={testimonial.image} alt={testimonial.name} />
+        <img
+          src={testimonial.image}
+          alt={testimonial.name}
+          loading="lazy"
+          decoding="async"
+        />
       </div>
       <div className="testimonial-card__content">
         <p className="testimonial-card__quote">"{testimonial.quote}"</p>
