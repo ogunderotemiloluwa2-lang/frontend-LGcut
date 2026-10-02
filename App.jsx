@@ -1098,7 +1098,7 @@ function ServicesSection({ services, onSelect, onSelectCustom }) {
             id="style-search-input"
             type="text"
             className="style-search__input"
-            placeholder="e.g. fade, afro, cornrows, waves…"
+            placeholder="e.g. afro, waves, taper fade, twists…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             autoComplete="off"
