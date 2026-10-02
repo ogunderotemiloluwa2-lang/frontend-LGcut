@@ -1070,6 +1070,23 @@ section[id] {
 .link-button--danger { color: #a34848; }
 .admin-empty { color: var(--muted); font-size: 0.9rem; padding: 0.5rem 0; }
 .admin-note { color: var(--muted); font-size: 0.78rem; }
+.admin-hint { color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem; }
+.admin-days { display: flex; flex-direction: column; gap: 1.25rem; }
+.admin-day__date { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+.admin-day__slots { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.admin-slot { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; min-width: 84px; padding: 0.55rem 0.7rem; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--paper); color: var(--ink); font: inherit; cursor: pointer; transition: var(--transition-base); }
+.admin-slot:hover:not(:disabled) { border-color: var(--accent); }
+.admin-slot__time { font-size: 0.9rem; font-weight: 600; }
+.admin-slot__state { font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.admin-slot--available { background: #e5f1e8; border-color: #bcdcc6; }
+.admin-slot--available .admin-slot__state { color: #2f6b42; }
+.admin-slot--unavailable { background: #f7e4e1; border-color: #e6c3bd; }
+.admin-slot--unavailable .admin-slot__state { color: #8b3d3d; }
+.admin-slot--booked { background: #f5ead0; border-color: #e3d0a4; }
+.admin-slot--booked .admin-slot__state { color: #785619; }
+.admin-slot:disabled { cursor: not-allowed; opacity: 0.75; }
+.admin-slot--past { background: var(--line); border-color: var(--line-strong); }
+.admin-slot--past .admin-slot__state { color: var(--muted); }
 .admin-message, .admin-error { margin-top: 1rem; padding: 0.85rem 1rem; border-radius: var(--radius-sm); }
 .admin-message { background: #e5f1e8; color: #2f6b42; }
 .admin-error { background: #f7e4e1; color: #8b3d3d; }

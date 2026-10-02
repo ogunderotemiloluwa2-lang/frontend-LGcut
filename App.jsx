@@ -897,7 +897,6 @@ function AdminPanel() {
   const [bookings, setBookings] = useState([]);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const [slotForm, setSlotForm] = useState({ date: "", startTime: "10:00", endTime: "11:00" });
 
   const loadData = async (authToken = token) => {
     setError("");
@@ -931,11 +930,6 @@ function AdminPanel() {
     await loadData(token);
   };
 
-  const handleAddSlot = async (event) => {
-    event.preventDefault();
-    await runAction(() => adminApi.createAvailability(token, slotForm), "Time slot added");
-  };
-
   // Soonest first, so the next appointment is always at the top.
   const sortedBookings = [...bookings].sort((a, b) =>
     `${a.date} ${a.startTime}`.localeCompare(`${b.date} ${b.startTime}`)
@@ -943,6 +937,18 @@ function AdminPanel() {
   const sortedSlots = [...slots].sort((a, b) =>
     `${a.date} ${a.startTime}`.localeCompare(`${b.date} ${b.startTime}`)
   );
+
+  // Group the times by day so the admin sees one simple list per date.
+  const slotsByDate = sortedSlots.reduce((acc, slot) => {
+    (acc[slot.date] = acc[slot.date] || []).push(slot);
+    return acc;
+  }, {});
+
+  const formatSlotDate = (dateStr) => {
+    const date = new Date(`${dateStr}T00:00:00`);
+    if (Number.isNaN(date.getTime())) return dateStr;
+    return date.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+  };
 
   return (
     <main className="admin-page">
@@ -1009,42 +1015,37 @@ function AdminPanel() {
                 <h2>Availability</h2>
                 <span>{sortedSlots.length} time slots</span>
               </div>
-              <form className="admin-slot-form" onSubmit={handleAddSlot}>
-                <input type="date" value={slotForm.date} onChange={(event) => setSlotForm({ ...slotForm, date: event.target.value })} required />
-                <input type="time" value={slotForm.startTime} onChange={(event) => setSlotForm({ ...slotForm, startTime: event.target.value })} required />
-                <input type="time" value={slotForm.endTime} onChange={(event) => setSlotForm({ ...slotForm, endTime: event.target.value })} required />
-                <button className="btn btn--primary btn--small" type="submit">Add time slot</button>
-              </form>
+              <p className="admin-hint">
+                Tap a time to mark it unavailable, or tap it again to open it back up.
+                Times that have already passed or are booked are locked.
+              </p>
               {sortedSlots.length === 0 ? (
-                <p className="admin-empty">No time slots yet. Add one above.</p>
+                <p className="admin-empty">No time slots yet.</p>
               ) : (
-                <div className="admin-table-wrap">
-                  <table className="admin-table">
-                    <thead>
-                      <tr><th>Date</th><th>Time</th><th>Status</th><th>Action</th></tr>
-                    </thead>
-                    <tbody>
-                      {sortedSlots.map((slot) => (
-                        <tr key={slot.id}>
-                          <td>{slot.date}</td>
-                          <td>{slot.startTime} – {slot.endTime}</td>
-                          <td><span className={`admin-status admin-status--${slot.status}`}>{slot.status}</span></td>
-                          <td>
-                            {slot.status === "booked" ? (
-                              <span className="admin-note">Booked</span>
-                            ) : (
-                              <>
-                                <button className="link-button" onClick={() => runAction(() => adminApi.updateAvailability(token, slot.id, { status: slot.status === "available" ? "unavailable" : "available" }), slot.status === "available" ? "Slot closed" : "Slot opened")}>
-                                  {slot.status === "available" ? "Close" : "Open"}
-                                </button>
-                                <button className="link-button link-button--danger" onClick={() => { if (window.confirm("Remove this time slot?")) runAction(() => adminApi.deleteAvailability(token, slot.id), "Time slot removed"); }}>Remove</button>
-                              </>
-                            )}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <div className="admin-days">
+                  {Object.entries(slotsByDate).map(([date, daySlots]) => (
+                    <div className="admin-day" key={date}>
+                      <div className="admin-day__date">{formatSlotDate(date)}</div>
+                      <div className="admin-day__slots">
+                        {daySlots.map((slot) => {
+                          const locked = slot.status === "booked" || slot.past;
+                          const label = slot.status === "booked" ? "Booked" : slot.past ? "Passed" : slot.status === "available" ? "Open" : "Closed";
+                          return (
+                            <button
+                              key={slot.id}
+                              type="button"
+                              className={`admin-slot admin-slot--${slot.status}${slot.past ? " admin-slot--past" : ""}`}
+                              disabled={locked}
+                              onClick={() => runAction(() => adminApi.updateAvailability(token, slot.id, { status: slot.status === "available" ? "unavailable" : "available" }), slot.status === "available" ? "Time marked unavailable" : "Time opened")}
+                            >
+                              <span className="admin-slot__time">{slot.startTime}</span>
+                              <span className="admin-slot__state">{label}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
             </section>
